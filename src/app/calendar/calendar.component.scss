@@ -1,0 +1,43 @@
+@import '../../scss/variables.scss';
+
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    td {
+        transition: .3s;
+        &.disabled {
+            opacity: .5;
+        }
+        &.active {
+            font-weight: 700;
+            background-color: $primary-color;
+            transition: .3s;
+        }
+        &.selected {
+            background-color: $yellow;
+            color: $very-dark-gray;
+            font-weight: 700;
+            transition: .3s;
+            &:hover {
+                color: $yellow;
+            }
+            &.active {
+                background-color: $primary-color;
+                color: $yellow;
+                &:hover {
+                    background-color: $yellow;
+                    color: $primary-color;
+                }
+            }
+        }
+        &:hover {
+            transition: .3s;
+            cursor: pointer;
+            background-color: black;
+            &.active {
+                color: $primary-color;
+            }
+        }
+    }
+}

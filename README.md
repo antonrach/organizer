@@ -2,13 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
 
+This is an organizer ipmlemented in Angular framework. You may pick any date on the calendar and add as many tasks for this day as you want. Once you created a task, you may delete it in the future as well.
+
+## Firebase
+
+To run this app you should have an account on Firebase. Go to `https://console.firebase.google.com/`, register, if you haven't yet, and create a new project. Firebase works as a backend server for this app. All your tasks will be stored remotely on Firebase.
+
+## Setting environment variables
+
+Create `.env` file in the root folder and add there an environment variable `FIREBASE_URL` with the url of your project on the firebase server. Example: `FIREBASE_URL=https://organizerapp-00000-default-rtdb.firebaseio.com`.
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4402/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng g c component-name` to generate a new component. You can also use `ng g directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 

@@ -1,0 +1,37 @@
+<table>
+    <thead>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let week of calendar">
+            <td
+                *ngFor="let day of week.days"
+                [ngClass]="{
+                    active: day.active,
+                    disabled: day.disabled,
+                    selected: day.selected
+                }"
+                (click)="select(day.value)"
+                (mouseenter)="toggleTodayMessage({
+                    payload: true,
+                    isActive: day.active
+                })"
+                (mouseleave)="toggleTodayMessage({
+                    payload: false,
+                    isActive: day.active
+                })"
+            >
+                <span>
+                    {{ day.value | moment:'DD' }}
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>

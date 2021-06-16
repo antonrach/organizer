@@ -1,0 +1,8 @@
+<div class="info" [@fade]="!(removalProcessing$ | async).length ? 'void' : '*'">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>
+
+
+<div class="info" [@fade]="!(isToday$ | async) ? 'void' : '*'">
+    <p>Today</p>
+</div>

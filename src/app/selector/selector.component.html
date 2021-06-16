@@ -1,0 +1,7 @@
+<p>
+    <mat-icon [inline]="true" class="arrow-icon" (click)="go(-1)">arrow_left</mat-icon>
+
+    <span>{{ date | async | moment }}</span>
+
+    <mat-icon [inline]="true" class="arrow-icon" (click)="go(1)">arrow_right</mat-icon>
+</p>

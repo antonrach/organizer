@@ -1,0 +1,26 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span {
+    margin: 0 2rem;
+    text-align: center;
+    width: 250px;
+}
+
+.arrow-icon {
+    padding: .7rem;
+    font-size: 2rem !important;
+    transition: .2s;
+    &:hover {
+        cursor: pointer;
+        color: $primary-color;
+        transition: .2s;
+    }
+    @include no-select;
+}

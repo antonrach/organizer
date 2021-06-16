@@ -1,1 +1,163 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$organizer-primary: mat-palette($mat-indigo);
+$organizer-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$organizer-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$organizer-theme: mat-light-theme((
+  color: (
+    primary: $organizer-primary,
+    accent: $organizer-accent,
+    warn: $organizer-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($organizer-theme);
+
+@import './scss/variables.scss';
+@import './fonts/fonts.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: $background;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: $primary-color;
+    &:hover {
+        cursor: pointer;
+        color: $light-gray;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+textarea {
+    resize: none;
+    display: block;
+    margin: auto;
+    width: 100%;
+    padding: .4rem;
+    font-size: 1.2rem;
+    border: 4px solid transparent;
+    outline-width: 0;
+    outline: none;
+    margin-bottom: 1rem;
+    overflow: auto;
+    transition: .3s;
+    &:hover {
+        border-color: $light-gray;
+        transition: .3s;
+    }
+    &:focus {
+        border-color: $primary-color;
+        transition: .3s;
+    }
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: .2rem 0 4rem 0;
+}
+
+table {
+    font-size: 1.5rem;
+    th {
+        background-color: $dark-gray;
+    }
+    td {
+        background-color: $very-dark-gray;
+        text-align: center;
+    }
+    th, td {
+        width: calc(100% / 7);
+        padding: .5rem 0;
+    }
+}
+
+.btn {
+    display: inline-block;
+    background-color: $dark-gray;
+    color: $light-gray;
+    padding: 0.4rem 1.3rem;
+    font-size: 1rem;
+    border: none;
+    margin-right: .5rem;
+    transition: .3s;
+    outline: none;
+    &:disabled {
+        background-color: rgb(116, 116, 116);
+        color: white;
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+    &:hover:not(:disabled) {
+        cursor: pointer;
+        opacity: .8;
+    }
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin: auto;
+    padding: .8rem 1.3rem;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.removal-notification {
+    // background-color: rgb(15, 255, 35);
+    .sn-title {
+        font-size: 24px !important;
+        font-weight: bold;
+        margin-bottom: 16px !important;
+    }
+    .sn-content {
+        font-size: 20px !important;
+    }
+}

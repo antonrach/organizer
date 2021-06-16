@@ -1,0 +1,97 @@
+<section>
+    <header [class.no-margin]="(loading$ | async) || !tasks.length">
+        Organizer: <strong>{{ date$ | async | moment:'YYYY/MM/DD'}}</strong>
+    </header>
+
+    <main>
+        <div class="loader-cont" *ngIf="(loading$ | async) && !addLoading && !errorLoading && !(addError$ | async)">
+
+            <div class="loader">
+                <div class="spinner-cont">
+                    <div class="sk-chase">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="error-loading no-tasks" *ngIf="errorLoading && !(addError$ | async)">
+            <p class="text-center">
+                Sorry, couldn't load your tasks.
+            </p>
+            <button
+                class="btn btn-primary reload"
+                type="button"
+                (click)="reload(date$.getValue())"
+            >
+                <mat-icon [inline]="true" class="icon-button">refresh</mat-icon>
+            </button>
+        </div>
+        <div *ngIf="!tasks.length && !(loading$ | async) && !errorLoading" class="no-tasks">
+            <p class="text-center">No tasks yet.</p>
+        </div>
+        <ul *ngIf="tasks.length && !(loading$ | async) !errorLoading">
+            <li class="task" *ngFor="let task of tasks; let i = index">
+                <div>
+                    <strong>{{i + 1}}. </strong>
+                    <p>{{task.title}}</p>
+                </div>
+                <button
+                    class="btn btn-primary"
+                    [matMenuTriggerFor]="modalDelete"
+                >
+                    <mat-icon [inline]="true" class="icon-button">delete</mat-icon>
+                </button>
+                <mat-menu #modalDelete="matMenu" class="modal-delete" xPosition="before">
+                    <app-modal-delete
+                        (click)="$event.stopPropagation()"
+                        (userConfirmed)="remove(task, modalDelete)"
+                        (closeEvent)="closeModal(modalDelete)"
+                    ></app-modal-delete>
+                </mat-menu>
+            </li>
+        </ul>
+        <div class="add-loader-cont" *ngIf="addLoading && !(addError$ | async)">
+            <div class="add-loader">
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
+        </div>
+        <div class="error-loading no-tasks" *ngIf="(addError$ | async) && !errorLoading">
+            <p class="text-center">
+                Sorry, couldn't add your task.
+            </p>
+            <button
+                class="btn btn-primary reload"
+                type="button"
+                (click)="retryAdd()"
+            >
+                <mat-icon [inline]="true" class="icon-button">refresh</mat-icon>
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <form
+            [formGroup]="form"
+            (ngSubmit)="submit()"
+        >
+            <textarea
+                cols="30"
+                rows="4"
+                placeholder="Type something here..."
+                formControlName="title"
+            ></textarea>
+            <button
+                type="submit"
+                class="btn btn-primary btn-block"
+                [disabled]="form.invalid || (loading$ | async) || addLoading || errorLoading"
+            >Add task</button>
+        </form>
+    </footer>
+</section>
+

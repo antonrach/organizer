@@ -1,0 +1,114 @@
+@import '../../scss/variables.scss';
+@import '../../scss/visualEffects/spinner.scss';
+@import '../../scss/visualEffects/flat-loader.scss';
+
+section {
+    margin: auto;
+}
+
+header {
+    margin-bottom: 1rem;
+    &.no-margin {
+        margin-bottom: 0;
+    }
+}
+
+ul {
+    margin-bottom: 1.2rem;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    border: 1px $dark-gray solid;
+    padding: .3rem 1rem;
+    align-items: center;
+    margin-bottom: .5rem;
+    white-space: pre-wrap;
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: calc(100% - 100px);
+        strong {
+            max-width: 100px;
+            overflow: hidden;
+        }
+        p {
+            width: calc(100% - 120px);
+            text-align: left;
+        }
+    }
+    button {
+        width: 80px;
+        padding: 0;
+        margin-right: 0;
+    }
+}
+
+.icon-button {
+    font-size: 2rem !important;
+    padding: .3rem;
+    vertical-align: middle;
+}
+
+.no-tasks {
+    height: 8rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    &.error-loading {
+        color: $pink;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 1rem 0;
+    }
+    p {
+        margin: auto;
+    }
+}
+
+main {
+    position: relative;
+}
+
+.loader-cont {
+    height: 6rem;
+
+    .loader {
+        //height: 8rem;
+        height: 100%;
+        position: relative;
+        .spinner-cont {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.add-loader-cont {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    .add-loader {
+        margin: auto;
+        height: 40px;
+    }
+}
+
+.reload {
+    background-color: $pink;
+    font-size: inherit;
+    //display: block;
+    width: 80px;
+    padding: 0;
+    margin: 0;
+    height: auto;
+}
+
+.modal-delete {
+    background-color: $very-dark-gray;
+    padding: .5rem 1rem;
+}
